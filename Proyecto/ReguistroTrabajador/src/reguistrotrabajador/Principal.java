@@ -44,7 +44,7 @@ public class Principal {
             
         } while (respuesta.equals("Si")||respuesta.equals("si"));
     }
- //Creacion de Ejecutivo cona todas las varibles.   
+ //Creacion de Ejecutivo con todas las variables.   
     public static void Ejecutivo(){
         String nombre;
         String apellido;
@@ -89,14 +89,14 @@ public class Principal {
    }
    
    public static void MostrarResultados(){
-       //for mejorado.
+       
        for(Persona persona1: registro){
            System.out.print(persona1);
            System.out.println("\n---------------------------------");
        }
    }
    public static void CalcularTotPer(){
-       //Total
+       
        System.out.println("");
        System.out.println("Numero de Ejecutivos "+ cont);
        System.out.println("Numero de Trabajadores "+ cont2);
