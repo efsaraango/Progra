@@ -16,7 +16,7 @@ public class Ejecutivo extends Persona{
 
     public Ejecutivo( String nombre, String apellido,int edad, int cedula, int horasTrabajo) {
         super(nombre, apellido, edad, cedula, horasTrabajo);
-        this.costoHora = costoHora;
+       
         
     }
 

@@ -91,6 +91,7 @@ public class Principal {
    public static void MostrarResultados(){
        
        for(Persona persona1: registro){
+           System.out.println(persona1.getClass());
            System.out.print(persona1);
            System.out.println("\n---------------------------------");
        }
