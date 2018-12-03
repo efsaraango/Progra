@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    La clase Ejecutivo hereda de Personal y
+    accede a los datos portected de la superclase, para formando objetos 
+
  */
 package reguistrotrabajador;
 
@@ -9,38 +9,37 @@ package reguistrotrabajador;
  *
  * @author SARANGO
  */
-public class Ejecutivo extends Persona{
-    private double costoHora = 2.80;
-    
-    
+public class Ejecutivo extends Personal {
 
-    public Ejecutivo( String nombre, String apellido,int edad, int cedula, int horasTrabajo) {
-        super(nombre, apellido, edad, cedula, horasTrabajo);
-       
-        
+//Costructor con cinco elementos 
+    public Ejecutivo(String nombre, String apellido, int edad, int cedula, double horasExtra) {
+        super(nombre, apellido, edad, cedula, horasExtra);
+
     }
-
-    public double getCostoHora() {
-        return costoHora;
-    }
-
-    public double Sueldo(){
+//Calcula Sueldo a pagar, obteniendo las horas extra de trabajo.   
+    public double Sueldo() {
         double sueldofin;
-        if (horasTrabajo<=240) 
-            sueldofin= 500.00;          
-        else
-            sueldofin = costoHora*horasTrabajo;
+        double costExtra = 3.25;
+
+        if (horasExtra == 0) {
+            sueldofin = 500.00;
+        } else {
+            sueldofin = (horasExtra * costExtra) + 500.00;
+        }
         return sueldofin;
-       
+
     }
-    public double CostoSeguro(){
-        return Sueldo()*0.30;
-    
+
+    //Utimetodo abstract se calcula el costo del seguro a pagar obteniendo el sueldo final. 
+    public double CostoSeguro() {
+        return Sueldo() * 0.30;
+
     }
-    
-    public String toString(){
-    return String.format("----------REPORTE EJECUTIVO----------\n%sSu sueldo es de: %.2f$\nValor a descontar de seguros: %.2f"
-                                                                        , super.toString(),Sueldo(),CostoSeguro());
+    //devuelve representación String del objeto Ejecuvito.
+    @Override//indica que este método sobrescribe el método de la superclase
+    public String toString() {
+        return String.format("----------REPORTE EJECUTIVO----------\n%sSu sueldo es de: %.2f$\nValor a descontar de seguros: %.2f",
+                 super.toString(), Sueldo(), CostoSeguro());
     }
-    
+
 }

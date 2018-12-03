@@ -1,43 +1,39 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    La clase Empleado hereda de Personal y
+    accede a los datos portected de la superclase, para formar objetos.
  */
 package reguistrotrabajador;
 
-/**
- *
- * @author SARANGO
- */
-public class Empleado extends Persona{
-    private double costoHora = 1.5833;
-   
-
-    public Empleado(String nombre, String apellido, int edad, int cedula, int horasTrabajo) {
-        super(nombre, apellido, edad, cedula, horasTrabajo);
-    }
-
-    public double getCostoHora() {
-        return costoHora;
-    }
+public class Empleado extends Personal {
     
-    public double Sueldo(){
+// constructor con cinco argumentos
+    public Empleado(String nombre, String apellido, int edad, int cedula, double horasExtra) {
+        super(nombre, apellido, edad, cedula, horasExtra);
+    }
+
+//Calcula Sueldo a pagar, obteniendo las horas extra de trabajo.   
+    public double Sueldo() {
         double sueldofin;
-        if (horasTrabajo <=240) 
-            sueldofin= 380.00;          
-        else
-            sueldofin = costoHora*horasTrabajo;
+        double costExtra = 2.50;
+
+        if (horasExtra == 0) {
+            sueldofin = 380.00;
+        } else {
+            sueldofin = (horasExtra * costExtra) + 380.00;
+        }
         return sueldofin;
-        
+
     }
-    
-    public double CostoSeguro(){
-        return Sueldo()*0.30;
-    
+//Calcula el costo del seguro a pagar obteniendo el sueldo final.    
+
+    public double CostoSeguro() {
+        return Sueldo() * 0.30;
+
     }
-    
-    public String toString(){
-    return String.format("----------REPORTE EMPLEADO----------\n%sSu sueldo es de: %.2f$\nValor a descontar de seguros: %.2f"
-                                                                        , super.toString(),Sueldo(),CostoSeguro());
+    //devuelve representación String del objeto Empleado   
+    @Override//indica que este método sobrescribe el método de la superclase
+    public String toString() {
+        return String.format("----------REPORTE EMPLEADO----------\n%sSu sueldo es de: %.2f$\nValor a descontar de seguros: %.2f",
+                 super.toString(), Sueldo(), CostoSeguro());
     }
 }
